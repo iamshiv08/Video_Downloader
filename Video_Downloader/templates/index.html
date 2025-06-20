@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🎥 Video Downloader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Video Downloader</h1>
+      <p class="subtitle">Fast. Free. High Quality Downloads.</p>
+
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <div class="flash">{{ messages[0] }}</div>
+      {% endif %} {% endwith %}
+
+      <form method="post" class="download-form">
+        <input
+          type="text"
+          name="video_url"
+          placeholder="Paste video URL here"
+          required
+          class="url"
+        />
+        <select name="quality">
+          <option>1080p</option>
+          <option>720p</option>
+          <option>480p</option>
+          <option>360p</option>
+          <option>Best available</option>
+        </select>
+        <button type="submit">⬇ Download Video</button>
+      </form>
+    </div>
+  </body>
+</html>
